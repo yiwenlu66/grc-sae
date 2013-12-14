@@ -1,0 +1,10 @@
+name: shs1509grc
+version: 1
+
+libraries:
+- name: "django"
+  version: "1.4"
+
+handlers:
+- url: /static
+  static_dir: static
