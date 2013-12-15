@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse,HttpResponseRedirect, HttpResponse, HttpResponseNotAllowed
 from grc.models import Group, Question
+from mysite.settings import DEBUG
 import time,random,itertools
 
 def Portal(request):
@@ -34,7 +35,10 @@ def Portal(request):
             # Record chosen (group, question) tuples for random revision
             return response
         except:
-            return HttpResponseRedirect("/")
+            if DEBUG:
+        	    raise
+            else:
+                return HttpResponseRedirect("/")
     else:
         return HttpResponseNotAllowed
 
@@ -86,7 +90,10 @@ def Review(request):
 	        # Avoid cookies with [] ,space or ','
 	        return response
     except:
-        return HttpResponseRedirect("/")
+        if DEBUG:
+    	    raise
+        else:
+            return HttpResponseRedirect("/")
 
 def About(request):
     return render_to_response("about.html")
