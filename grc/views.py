@@ -17,7 +17,7 @@ def Portal(request):
             response=HttpResponseRedirect("/review")
             groups_selected = []
             for i in range(len(groups_en_ch)):
-                if request.POST["group%d" % i]:
+                if request.POST.get("group%d" % i):
                     groups_selected.append(groups_en_ch[i][0])
             # Get selected groups
             order = eval(request.POST["order"])
@@ -85,8 +85,8 @@ def Review(request):
 	            return finish()
 	        qseq_to_render = random.choice(list(set(range(len(all_questions))) - chosen))
 	        chosen.add(qseq_to_render)
-	        response=render_to_response("review.html",{"question":question[qseq_to_render]})
-	        response.set_cookie(chosen,("{" + str(chosen)[5:-2] + "}").replace(", ", "|"))
+	        response=render_to_response("review.html",{"question":all_questions[qseq_to_render]})
+	        response.set_cookie("chosen",("{" + str(chosen)[5:-2] + "}").replace(", ", "|"))
 	        # Avoid cookies with [] ,space or ','
 	        return response
     except:
