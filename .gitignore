@@ -1,3 +1,4 @@
 *.pyc
 *.wsgic
 secret.py
+*.sql
