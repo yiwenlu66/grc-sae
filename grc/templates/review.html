@@ -41,10 +41,10 @@
             <h2>{{question.title}}</h2>
             <div id="question"></div>
             {% ifequal question.q_class 0 %}
-            <script>document.getElementById("question").innerHTML=get_blanks_random("{{question.question}}");</script>
+            <script>document.getElementById("question").innerHTML=get_blanks_random("{{question.question|linebreaksbr}}");</script>
             {% endifequal %}
             {% ifequal question.q_class 1 %}
-            <script>document.getElementById("question").innerHTML=get_blanks_strict("{{question.question}}","{{question.answer}}")</script>
+            <script>document.getElementById("question").innerHTML=get_blanks_strict("{{question.question|linebreaksbr}}","{{question.answer}}")</script>
             {% endifequal %}
             <br>
         </form>
@@ -52,7 +52,7 @@
         <button class="btn btn-primary btn-lg" id="submit" onclick="check_answer_random('{{question.question}}')">提交</button>
         {%endifequal%}
         {%ifequal question.q_class 1%}
-        <button class="btn btn-primary btn-lg" id="submit" onclick="check_answer_strict(&quot;{{question.answer}}&quot;)">提交</button>
+        <button class="btn btn-primary btn-lg" id="submit" onclick="check_answer_strict('{{question.answer}}')">提交</button>
         {%endifequal%}
     </div>
 

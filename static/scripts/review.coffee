@@ -28,8 +28,9 @@ root.check_answer_random=(question)->
         $.cookie("qseq",parseInt($.cookie("qseq")) + 1)
     document.getElementById("submit").onclick=()->location.reload()
 
-root.get_blanks_strict=(question,answer)->
-    question_split=question.split("###")
+root.get_blanks_strict=(question,raw_answer)->
+    answer=eval("[\""+raw_answer.split(", ").join("\",\"")+"\"]")
+    question_split=question.split("    ").join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").split("###")
     output_string=""
     for i in [0..question_split.length-2]
         output_string+=question_split[i]
@@ -37,7 +38,7 @@ root.get_blanks_strict=(question,answer)->
     output_string+=question_split[question_split.length-1]
 
 root.check_answer_strict=(raw_answer)->
-    answer=eval(raw_answer.split("&#39;").join("\""))
+    answer=eval("[\""+raw_answer.split(", ").join("\",\"")+"\"]")
     inputs=document.getElementsByTagName("input")
     for i in [0..answer.length-1]
         input=inputs[0]

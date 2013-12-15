@@ -45,9 +45,10 @@
     };
   };
 
-  root.get_blanks_strict = function(question, answer) {
-    var i, output_string, question_split, _i, _ref;
-    question_split = question.split("###");
+  root.get_blanks_strict = function(question, raw_answer) {
+    var answer, i, output_string, question_split, _i, _ref;
+    answer = eval("[\"" + raw_answer.split(", ").join("\",\"") + "\"]");
+    question_split = question.split("    ").join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").split("###");
     output_string = "";
     for (i = _i = 0, _ref = question_split.length - 2; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
       output_string += question_split[i];
@@ -58,7 +59,7 @@
 
   root.check_answer_strict = function(raw_answer) {
     var answer, correct, i, input, inputs, _i, _ref;
-    answer = eval(raw_answer.split("&#39;").join("\""));
+    answer = eval("[\"" + raw_answer.split(", ").join("\",\"") + "\"]");
     inputs = document.getElementsByTagName("input");
     for (i = _i = 0, _ref = answer.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
       input = inputs[0];
