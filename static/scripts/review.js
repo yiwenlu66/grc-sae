@@ -20,7 +20,7 @@
     for (i = _i = 0, _ref = phrases.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
       phrase = phrases[i];
       is_blank = (i === phrases.length - 1 && num_blanks === 0 ? true : i === phrases.length - 1 && num_blanks === phrases.length - 1 ? false : Math.random() < 0.4);
-      output_string += (is_blank ? "<div class='form-group'><input type='text' size='" + (phrase.length - 1) + "' class='form-control' name='input" + (to_2digit(i)) + "' maxlength='" + (phrase.length - 1) + "'></div>" + (phrase.slice(-1)) : phrase);
+      output_string += (is_blank ? "<div class='form-group'><input type='text' size='" + (Math.ceil(1.7 * (phrase.length - 1))) + "' class='form-control' name='input" + (to_2digit(i)) + "' maxlength='" + (phrase.length - 1) + "'></div>" + (phrase.slice(-1)) : phrase);
       num_blanks += (is_blank ? 1 : 0);
     }
     return output_string;
@@ -52,7 +52,7 @@
     output_string = "";
     for (i = _i = 0, _ref = question_split.length - 2; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
       output_string += question_split[i];
-      output_string += "<div class='form-group'><input type='text' size='" + answer[i].length + "' class='form-control' name='input" + i + "' maxlength='" + answer[i].length + "'></div>";
+      output_string += "<div class='form-group'><input type='text' size='" + (Math.ceil(1.7 * answer[i].length)) + "' class='form-control' name='input" + i + "' maxlength='" + answer[i].length + "'></div>";
     }
     return output_string += question_split[question_split.length - 1];
   };
