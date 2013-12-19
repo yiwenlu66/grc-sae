@@ -97,3 +97,6 @@ def Review(request):
 
 def About(request):
     return render_to_response("about.html")
+
+def Google(request):
+    return render_to_response("google.html")
