@@ -4,5 +4,6 @@ urlpatterns = patterns('grc.views',
                        url(r'^$', 'Portal'),
                        url(r'^review', 'Review'),
                        url(r'^about', 'About'),
-                       url(r'^google', 'Google')
+                       url(r'^google', 'Google'),
+                       url(r'^baidu', 'Baidu')
                        )

@@ -113,3 +113,6 @@ def About(request):
 
 def Google(request):
     return render_to_response("google.html")
+
+def Baidu(request):
+    return render_to_response("baidu.html")
