@@ -1,6 +1,9 @@
 # Django settings for mysite project.
+import os
 
 DEBUG = True
+if 'SERVER_SOFTWARE' in os.environ:
+    DEBUG=False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -9,7 +12,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-import os
 
 if 'SERVER_SOFTWARE' in os.environ:
     from sae.const import (
