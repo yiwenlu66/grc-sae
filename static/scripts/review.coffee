@@ -10,7 +10,7 @@ root.get_blanks_random = (question) ->
     for i in [0..phrases.length-1]
         phrase=phrases[i]
         is_blank=(if i is phrases.length-1 and num_blanks is 0 then true else if i is phrases.length-1 and num_blanks is phrases.length-1 then false else Math.random()<0.4)
-        output_string+=(if is_blank then "<div class='form-group'><input type='text' class='form-control' name='input#{to_2digit(i)}' maxlength='#{phrase.length-1}'></div>#{phrase.slice(-1)}" else phrase)
+        output_string+=(if is_blank then "<div class='form-group'><input type='text' size='#{phrase.length-1}' class='form-control' name='input#{to_2digit(i)}' maxlength='#{phrase.length-1}'></div>#{phrase.slice(-1)}" else phrase)
         num_blanks+=(if is_blank then 1 else 0)
     output_string
 
@@ -34,7 +34,7 @@ root.get_blanks_strict=(question,raw_answer)->
     output_string=""
     for i in [0..question_split.length-2]
         output_string+=question_split[i]
-        output_string+="<div class='form-group'><input type='text' class='form-control' name='input#{i}' maxlength='#{answer[i].length}'></div>"
+        output_string+="<div class='form-group'><input type='text' size='#{answer[i].length}' class='form-control' name='input#{i}' maxlength='#{answer[i].length}'></div>"
     output_string+=question_split[question_split.length-1]
 
 root.check_answer_strict=(raw_answer)->
