@@ -19,3 +19,5 @@ class Question(models.Model):
     answer=models.TextField(blank=True)
     #Converted from Python list, not required for q_class 0
     created = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.group)+"_"+str(self.id)
