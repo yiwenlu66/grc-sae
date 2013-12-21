@@ -1,9 +1,8 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponse, HttpResponseNotAllowed
+from django.http import HttpResponseRedirect, HttpResponseNotAllowed
 from grc.models import Group, Question
 from mysite.settings import DEBUG
-import time
 import random
 import itertools
 
@@ -113,6 +112,7 @@ def About(request):
 
 def Google(request):
     return render_to_response("google.html")
+
 
 def Baidu(request):
     return render_to_response("baidu.html")
