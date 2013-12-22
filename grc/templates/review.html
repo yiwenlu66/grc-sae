@@ -18,7 +18,8 @@
     <button class="btn btn-primary btn-lg" id="submit" onclick="check_answer_random('{{question.question}}')">提交</button>
     {%endifequal%}
     {%ifequal question.q_class 1%}
-    <button class="btn btn-primary btn-lg" id="submit" onclick="check_answer_strict('{{question.answer}}')">提交</button>
+    <script type="text/javascript">answer_to_check='{{question.answer}}'</script>
+    <button class="btn btn-primary btn-lg" id="submit" onclick="check_answer_strict(answer_to_check)">提交</button>
     {%endifequal%}
 {%endblock%}
 

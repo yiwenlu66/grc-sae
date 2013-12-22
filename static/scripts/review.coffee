@@ -38,7 +38,7 @@ root.get_blanks_strict=(question,raw_answer)->
     output_string+=question_split[question_split.length-1]
 
 root.check_answer_strict=(raw_answer)->
-    answer=eval("[\""+raw_answer.split(", ").join("\",\"")+"\"]")
+    answer=eval("[\""+raw_answer.split("&#39;").join("'").split(", ").join("\",\"")+"\"]")
     inputs=document.getElementsByTagName("input")
     for i in [0..answer.length-1]
         input=inputs[0]
